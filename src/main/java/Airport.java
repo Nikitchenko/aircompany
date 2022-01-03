@@ -59,31 +59,19 @@ public class Airport {
         return planeWithMaxCapacity;
     }
 
-    public List<MilitaryPlane> getTransportMilitaryPlanes() {
-        List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
+
+    public List<MilitaryPlane> getMilitaryPlanesByType(MilitaryType militaryType) {
+        List<MilitaryPlane> militaryPlanesSpecificType = new ArrayList<>();
         List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
         for (int i = 0; i < militaryPlanes.size(); i++) {
             MilitaryPlane plane = militaryPlanes.get(i);
-            if (plane.getType() == MilitaryType.TRANSPORT) {
-                transportMilitaryPlanes.add(plane);
+            if (plane.getType() == militaryType) {
+                militaryPlanesSpecificType.add(plane);
             }
         }
-        return transportMilitaryPlanes;
+        return militaryPlanesSpecificType;
     }
-// TO DO convert to get military plane by type!!!
 
-//    public List<MilitaryPlane> getBomberMilitaryPlanes() {
-//        List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
-//        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-//        for (int i = 0; i < militaryPlanes.size(); i++) {
-//            MilitaryPlane plane = militaryPlanes.get(i);
-//            if (plane.getType() == MilitaryType.BOMBER) {
-//                bomberMilitaryPlanes.add(plane);
-//            }
-//        }
-//        return bomberMilitaryPlanes;
-//
-//    }
 
     public Airport sortByMaxDistance() {
         Collections.sort(planes, new Comparator<Plane>() {
@@ -94,6 +82,18 @@ public class Airport {
         });
         return this;
     }
+
+
+    // TO DO make sort  by parameter
+//    public Airport sortByProperty(Plane property) {
+//        Collections.sort(planes, new Comparator<Plane>() {
+//            public int compare(Plane o1, Plane o2) {
+//                return o1.property - o2.property;
+//            }
+//        });
+//        return this;
+//    }
+
 
     public Airport sortByMaxSpeed() {
         Collections.sort(planes, new Comparator<Plane>() {

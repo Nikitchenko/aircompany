@@ -80,14 +80,23 @@ public class TestAirport {
 
         Assert.assertEquals(passengerPlaneWithMaxPassengerCapacity.toString(), airport.getPassengerPlaneWithMaxPassengersCapacity().toString(), "Passenger plane with maximal passenger capacity got incorrectly");
     }
+//
+//    @Test
+//    public void testGetTransportMilitaryPlanes() {
+//        Airport airport = new Airport(testPlanes);
+//        List<MilitaryPlane> transportMilitaryPlane = Arrays.asList(
+//                new MilitaryPlane("C-130 Hercules", 650, 5000, 110000, MilitaryType.TRANSPORT)
+//        );
+//        Assert.assertEquals(transportMilitaryPlane.toString(), airport.getTransportMilitaryPlanes().toString(), "Transport planes got incorrectly");
+//    }
 
     @Test
-    public void testGetTransportMilitaryPlanes() {
+    public void testGetMilitaryPlanesByType() {
         Airport airport = new Airport(testPlanes);
-        List<MilitaryPlane> transportMilitaryPlane = Arrays.asList(
+        List<MilitaryPlane> transportMilitaryPlanes = Arrays.asList(
                 new MilitaryPlane("C-130 Hercules", 650, 5000, 110000, MilitaryType.TRANSPORT)
         );
-        Assert.assertEquals(transportMilitaryPlane.toString(), airport.getTransportMilitaryPlanes().toString(), "Transport planes got incorrectly");
+        Assert.assertEquals(transportMilitaryPlanes.toString(), airport.getMilitaryPlanesByType(MilitaryType.TRANSPORT).toString(), "Transport military planes got incorrectly");
     }
 
 //    @Test
