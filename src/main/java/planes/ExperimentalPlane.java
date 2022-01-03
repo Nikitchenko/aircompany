@@ -38,12 +38,13 @@ public class ExperimentalPlane extends Plane {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ExperimentalPlane)) return false;
-        if (!super.equals(o)) return false;
-        ExperimentalPlane plane = (ExperimentalPlane) o;
-        return type == plane.type
-            && classificationLevel ==plane.classificationLevel;
+//        if (this == o) return true;
+//        if (!(o instanceof ExperimentalPlane)) return false;
+//        if (!super.equals(o)) return false;
+//        ExperimentalPlane plane = (ExperimentalPlane) o;
+//        return type == plane.type
+//            && classificationLevel ==plane.classificationLevel;
+        return o instanceof ExperimentalPlane ? true : false;
     }
 
     @Override

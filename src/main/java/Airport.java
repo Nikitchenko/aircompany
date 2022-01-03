@@ -13,7 +13,6 @@ import java.util.*;
 public class Airport {
     private final List<? extends Plane> planes;
 
-    //Constructor
     public Airport(List<? extends Plane> planes) {
         this.planes = planes;
     }
@@ -35,11 +34,18 @@ public class Airport {
             if (plane instanceof MilitaryPlane) {
                 militaryPlanes.add((MilitaryPlane) plane);
             }
-//            else {
-//                //what else?
-//            }
         }
         return militaryPlanes;
+    }
+
+    public List<ExperimentalPlane> getExperimentalPlanes() {
+        List<ExperimentalPlane> experimentalPlanes = new ArrayList<>();
+        for (Plane plane : planes) {
+            if (plane instanceof ExperimentalPlane) {
+                experimentalPlanes.add((ExperimentalPlane) plane);
+            }
+        }
+        return experimentalPlanes;
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
@@ -78,19 +84,10 @@ public class Airport {
 
     }
 
-    public List<ExperimentalPlane> getExperimentalPlanes() {
-        List<ExperimentalPlane> ExperimentalPlanes = new ArrayList<>();
-        for (Plane plane : planes) {
-            if (plane instanceof ExperimentalPlane) {
-                ExperimentalPlanes.add((ExperimentalPlane) plane);
-            }
-        }
-        return ExperimentalPlanes;
-    }
-
     public Airport sortByMaxDistance() {
         Collections.sort(planes, new Comparator<Plane>() {
             public int compare(Plane o1, Plane o2) {
+
                 return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
             }
         });
@@ -119,13 +116,13 @@ public class Airport {
         return planes;
     }
 
-    private void print(Collection<? extends Plane> collection) {
-        Iterator<? extends Plane> iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            Plane plane = iterator.next();
-            System.out.println(plane);
-        }
-    }
+//    private void print(Collection<? extends Plane> collection) {
+//        Iterator<? extends Plane> iterator = collection.iterator();
+//        while (iterator.hasNext()) {
+//            Plane plane = iterator.next();
+//            System.out.println(plane);
+//        }
+//    }
 
     @Override
     public String toString() {
