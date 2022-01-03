@@ -17,7 +17,7 @@ public class Airport {
         this.planes = planes;
     }
 
-    public List<PassengerPlane> getPassengerPlane() {
+    public List<PassengerPlane> getPassengerPlanes() {
         //List<? extends Plane> l = this.planes;
         List<PassengerPlane> passengerPlanes = new ArrayList<>();
         for (Plane plane : planes) {
@@ -49,7 +49,7 @@ public class Airport {
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
-        List<PassengerPlane> passengerPlanes = getPassengerPlane();
+        List<PassengerPlane> passengerPlanes = getPassengerPlanes();
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
         for (int i = 0; i < passengerPlanes.size(); i++) {
             if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
@@ -70,25 +70,26 @@ public class Airport {
         }
         return transportMilitaryPlanes;
     }
+// TO DO convert to get military plane by type!!!
 
-    public List<MilitaryPlane> getBomberMilitaryPlanes() {
-        List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        for (int i = 0; i < militaryPlanes.size(); i++) {
-            MilitaryPlane plane = militaryPlanes.get(i);
-            if (plane.getType() == MilitaryType.BOMBER) {
-                bomberMilitaryPlanes.add(plane);
-            }
-        }
-        return bomberMilitaryPlanes;
-
-    }
+//    public List<MilitaryPlane> getBomberMilitaryPlanes() {
+//        List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
+//        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
+//        for (int i = 0; i < militaryPlanes.size(); i++) {
+//            MilitaryPlane plane = militaryPlanes.get(i);
+//            if (plane.getType() == MilitaryType.BOMBER) {
+//                bomberMilitaryPlanes.add(plane);
+//            }
+//        }
+//        return bomberMilitaryPlanes;
+//
+//    }
 
     public Airport sortByMaxDistance() {
         Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
+            public int compare(Plane plane1, Plane plane2) {
 
-                return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
+                return plane1.getMaxFlightDistance() - plane2.getMaxFlightDistance();
             }
         });
         return this;
