@@ -1,3 +1,4 @@
+import models.ClassificationLevel;
 import models.MilitaryType;
 import planes.MilitaryPlane;
 import planes.PassengerPlane;
@@ -50,9 +51,9 @@ public class Airport {
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
         List<PassengerPlane> passengerPlanes = getPassengerPlanes();
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
-        for (int i = 0; i < passengerPlanes.size(); i++) {
-            if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
-                planeWithMaxCapacity = passengerPlanes.get(i);
+        for (PassengerPlane passengerPlane : passengerPlanes) {
+            if (passengerPlane.getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
+                planeWithMaxCapacity = passengerPlane;
             }
         }
         return planeWithMaxCapacity;
@@ -61,8 +62,7 @@ public class Airport {
     public List<MilitaryPlane> getMilitaryPlanesByType(MilitaryType militaryType) {
         List<MilitaryPlane> militaryPlanesSpecificType = new ArrayList<>();
         List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        for (int i = 0; i < militaryPlanes.size(); i++) {
-            MilitaryPlane plane = militaryPlanes.get(i);
+        for (MilitaryPlane plane : militaryPlanes) {
             if (plane.getType() == militaryType) {
                 militaryPlanesSpecificType.add(plane);
             }
@@ -70,59 +70,32 @@ public class Airport {
         return militaryPlanesSpecificType;
     }
 
+    public List<ExperimentalPlane> getExperimentalPlanesByClassificationLevel(ClassificationLevel classificationLevel) {
+        List<ExperimentalPlane> experimentalPlanesSpecificClassificationLevel = new ArrayList<>();
+        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
+        for (ExperimentalPlane plane : experimentalPlanes) {
+            if (plane.getClassificationLevel() == classificationLevel) {
+                experimentalPlanesSpecificClassificationLevel.add(plane);
+            }
+        }
+        return experimentalPlanesSpecificClassificationLevel;
+    }
 
-
-
-
-    // TO DO make sort by parameter
 
     public Airport sortByMaxFlightDistance() {
         planes.sort(Comparator.comparing(Plane::getMaxFlightDistance));
         return this;
     }
 
-//    public Airport sortByMaxDistance() {
-//        Collections.sort(planes, new Comparator<Plane>() {
-//            public int compare(Plane plane1, Plane plane2) {
-//
-//                return plane1.getMaxFlightDistance() - plane2.getMaxFlightDistance();
-//            }
-//        });
-//        return this;
-//    }
-
     public Airport sortByMaxSpeed() {
         planes.sort(Comparator.comparing(Plane::getMaxSpeed));
         return this;
     }
 
-//    public Airport sortByMaxSpeed() {
-//        Collections.sort(planes, new Comparator<Plane>() {
-//            public int compare(Plane o1, Plane o2) {
-//                return o1.getMaxSpeed() - o2.getMaxSpeed();
-//            }
-//        });
-//        return this;
-//    }
-
     public Airport sortByMaxLoadCapacity() {
         planes.sort(Comparator.comparing(Plane::getMaxLoadCapacity));
         return this;
     }
-
-//    public Airport sortByMaxLoadCapacity() {
-//        Collections.sort(planes, new Comparator<Plane>() {
-//            public int compare(Plane o1, Plane o2) {
-//                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
-//            }
-//        });
-//        return this;
-//    }
-
-    public List<? extends Plane> getPlanes() {
-        return planes;
-    }
-
 
     @Override
     public String toString() {

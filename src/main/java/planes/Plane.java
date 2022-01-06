@@ -2,7 +2,7 @@ package planes;
 
 import java.util.Objects;
 
- public abstract class Plane {
+public abstract class Plane {
     private final int maxSpeed;
     private final int maxFlightDistance;
     private final int maxLoadCapacity;
@@ -42,15 +42,8 @@ import java.util.Objects;
     }
 
     @Override
-    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Plane)) return false;
-//        Plane plane = (Plane) o;
-//        return maxSpeed == plane.maxSpeed &&
-//                maxFlightDistance == plane.maxFlightDistance &&
-//                maxLoadCapacity == plane.maxLoadCapacity &&
-//                Objects.equals(model, plane.model);
-        return o instanceof Plane ? true : false;
+    public boolean equals(Object object) {
+        return object instanceof Plane;
     }
 
     @Override
