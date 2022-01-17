@@ -33,12 +33,8 @@ public abstract class Plane {
 
     @Override
     public String toString() {
-        return "Plane{" +
-                "model='" + model + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                ", maxFlightDistance=" + maxFlightDistance +
-                ", maxLoadCapacity=" + maxLoadCapacity +
-                '}';
+        return String.format("Plane{model=%s, maxSpeed=%s, maxFlightDistance=%s, maxLoadCapacity=%s}",
+                model, maxSpeed, maxFlightDistance, maxLoadCapacity);
     }
 
     @Override

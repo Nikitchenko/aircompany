@@ -1,11 +1,14 @@
 import models.ClassificationLevel;
+import models.ExperimentalType;
 import models.MilitaryType;
+import planes.ExperimentalPlane;
 import planes.MilitaryPlane;
 import planes.PassengerPlane;
 import planes.Plane;
-import planes.ExperimentalPlane;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 // version: 1.1
 // made by Vitali Shulha
@@ -81,6 +84,16 @@ public class Airport {
         return experimentalPlanesSpecificClassificationLevel;
     }
 
+    public List<ExperimentalPlane> getExperimentalPlanesByType(ExperimentalType experimentalType) {
+        List<ExperimentalPlane> experimentalPlanesSpecificExperimentalType = new ArrayList<>();
+        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
+        for (ExperimentalPlane plane : experimentalPlanes) {
+            if (plane.getExperimentalType() == experimentalType) {
+                experimentalPlanesSpecificExperimentalType.add(plane);
+            }
+        }
+        return experimentalPlanesSpecificExperimentalType;
+    }
 
     public Airport sortByMaxFlightDistance() {
         planes.sort(Comparator.comparing(Plane::getMaxFlightDistance));
@@ -99,9 +112,7 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport{" +
-                "Planes=" + planes.toString() +
-                '}';
+        return "Airport{Planes=" + planes.toString() + '}';
     }
 
 }

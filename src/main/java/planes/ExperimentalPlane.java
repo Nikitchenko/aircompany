@@ -7,12 +7,15 @@ import java.util.Objects;
 
 public class ExperimentalPlane extends Plane {
 
-    private final ExperimentalType type;
-    private ClassificationLevel classificationLevel;
+    private final ExperimentalType experimentalType;
+    private final ClassificationLevel classificationLevel;
 
-    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalType type, ClassificationLevel classificationLevel) {
+    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity,
+                             ExperimentalType experimentalType,
+                             ClassificationLevel classificationLevel) {
+
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
-        this.type = type;
+        this.experimentalType = experimentalType;
         this.classificationLevel = classificationLevel;
     }
 
@@ -20,20 +23,14 @@ public class ExperimentalPlane extends Plane {
         return classificationLevel;
     }
 
-    public void setClassificationLevel(ClassificationLevel classificationLevel) {
-        this.classificationLevel = classificationLevel;
-    }
-
-    public ExperimentalType getType() {
-        return type;
+    public ExperimentalType getExperimentalType() {
+        return experimentalType;
     }
 
     @Override
     public String toString() {
         return super.toString().replace("}",
-                ", type=" + type
-                        + ", classification level=" + classificationLevel
-                        + '}');
+                String.format(", experimentalType=%s, classificationLevel=%s}", experimentalType, classificationLevel));
     }
 
     @Override
@@ -43,6 +40,6 @@ public class ExperimentalPlane extends Plane {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, classificationLevel);
+        return Objects.hash(super.hashCode(), experimentalType, classificationLevel);
     }
 }

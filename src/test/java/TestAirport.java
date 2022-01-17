@@ -91,6 +91,15 @@ public class TestAirport {
     }
 
     @Test
+    public void testGetExperimentalPlanesByExperimentalType() {
+        Airport airport = new Airport(testPlanes);
+        List<ExperimentalPlane> experimentalPlanesVTOL = Arrays.asList(
+                new ExperimentalPlane("Ryan X-13 Vertijet", 560, 307, 500, ExperimentalType.VTOL, ClassificationLevel.TOP_SECRET)
+        );
+        Assert.assertEquals(experimentalPlanesVTOL.hashCode(), airport.getExperimentalPlanesByType(ExperimentalType.VTOL).hashCode(), "VTOL experimental planes got incorrectly");
+    }
+
+    @Test
     public void testSortByMaxFlightDistance() {
         Airport airport = new Airport(testPlanes);
         List<Plane> sortedByMaxFlightDistancePlanes = Arrays.asList(
